@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Envio de Imagem</title>
+</head>
+<body>
+  <h2>Envie sua Imagem</h2>
+  {% if sucesso %}
+    <p style="color: green;">Imagem salva como: <b>{{ sucesso }}</b></p>
+  {% endif %}
+  <form method="POST" enctype="multipart/form-data">
+    <label>Imagem:</label><br>
+    <input type="file" name="image" required><br><br>
+
+    <label>Nome do Pedido:</label><br>
+    <input type="text" name="pedido" required><br><br>
+
+    <label>Deseja adicionar telefone?</label><br>
+    <input type="radio" name="addPhone" value="sim" id="sim"> Sim
+    <input type="radio" name="addPhone" value="nao" id="nao" checked> Não<br><br>
+
+    <div id="telefoneDiv" style="display: none;">
+      <label>Telefone:</label><br>
+      <input type="text" name="telefone"><br><br>
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    document.getElementById('sim').addEventListener('change', function () {
+      document.getElementById('telefoneDiv').style.display = 'block';
+    });
+    document.getElementById('nao').addEventListener('change', function () {
+      document.getElementById('telefoneDiv').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
